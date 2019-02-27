@@ -5,7 +5,7 @@ import * as queryString from 'query-string';
 
 
 const facebookInitOptions = {
-    appId: '398277270719379',
+    appId: '995966740602134',
     version: 'v3.2',
     cookie: true,
     xfbml: true
