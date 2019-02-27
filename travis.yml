@@ -26,3 +26,4 @@ deploy:
   script: docker push "$IMAGE_NAME:$TAG"
   on:
     all_branches: true
+
