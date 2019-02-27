@@ -1,0 +1,29 @@
+sudo: required
+dist: trusty
+branches:
+  only:
+  - master
+  - dev
+env:
+  global:
+  - PROJECT_NAME=fb-frontend-auth
+  - ORG=madiedinro
+  - IMAGE_NAME=$ORG/$PROJECT_NAME
+  - TAG="$( [ $TRAVIS_BRANCH == 'master' ] && echo latest || echo $TRAVIS_BRANCH )"
+  - secure: 1wjsKR3Da3j9OGFOH60M0uZH7aCAMVu+9917q6LFqJa9BI33g+VFz/fuHZWF/UspRseHk2dViqSSws3v1HwrRi6QE6lKuaIB8uIqH1uYwBgs9g1Ik46ClbMx3CHiUKup0vujppmix9QdgrcKprVFS0AXUa6y1zyzQRPRC+IlySF6ENm87rlVZwFuPsJylCqgNy6Dn48ZTUQS8P1eOppXSUdHFWEtQBxYcqFlsLklRveapcYne4joaCzLYYAtWlRrro7dwiav5ofA8VRzPMc520VuG3UIsyV6B+Y/TIS7qYSJsWix59LWnbB2SXvSWSYKKkP1TvLTyxLRKErXc0Il6HQjO6mfwTaADE+P/VvZgkFACYn7E1pdlnBM9odbML00c4p8kSoRrUKgHkn4vXzM7wQp/PDW5HhEtU87xfTtiK+gq9GiBuRXv4VqaOubjwL43cKwcAQp3U8a9kUogzIZkJJzO7MtyjYR9KKp1Z1CW+XAO/2pDDK3+/7etsubIIhKGSCCv2W6g4dc1BwWFhX1qbDWrzDyW0XDd0fi/t/I0XgFjRF2tHY03vM68NE7jkfF6SVl6HXBhWly6Sv3USg01P68HQlO2xSDTxX/6Y4pRhzzW30ZHUWDrSq+FJxhx/UZmqBhPuGBFTVbj2N3rsCoFnGjNog0L/XI62lePLTB9lk=
+services:
+- docker
+script:
+- cat Dockerfile | sed  "s/\:latest/\:$TAG/g" > Dockerfile.tag
+- docker build -t $PROJECT_NAME -f Dockerfile.tag .
+after_script:
+- docker images
+before_deploy:
+- docker tag "$PROJECT_NAME" "$IMAGE_NAME:$TAG"
+- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: docker push "$IMAGE_NAME:$TAG"
+  on:
+    all_branches: true
