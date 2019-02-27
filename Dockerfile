@@ -1,4 +1,5 @@
-FROM node:10-alpine 
+FROM node:10-alpine as builder
+
 WORKDIR /build
 
 COPY package.json .
@@ -12,12 +13,12 @@ ENV NODE_ENV=production
 
 RUN yarn build
 
-# FROM alpine:3.7
+FROM alpine:3.8
 
-# VOLUME  /usr/share/facebook-login
-# WORKDIR /usr/share/facebook-login
+VOLUME  /usr/share/fb-frontend-auth
+WORKDIR /usr/share/fb-frontend-auth
 
-# COPY --from=builder /build/dist /usr/share/facebook-login
+COPY --from=builder /build/dist /usr/share/fb-frontend-auth
 
-CMD ["/bin/ls", "/usr/share/facebook-login"]
+CMD ["/bin/ls", "/usr/share/fb-frontend-auth"]
 
