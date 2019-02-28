@@ -3,9 +3,8 @@ import * as url from 'url';
 import * as queryString from 'query-string';
 
 
-
 const facebookInitOptions = {
-    appId: '995966740602134',
+    appId: APP_CONFIG.appId,
     version: 'v3.2',
     cookie: true,
     xfbml: true
@@ -44,16 +43,11 @@ export class FacebookLogin extends Component<Auth, InitOptions & FacebookEvents>
         super(props)
 
         this.onLoadFacebookSDKScript = this.onLoadFacebookSDKScript.bind(this);
-
         this.facebookInit = this.facebookInit.bind(this);
         this.subscribeFacebookEvents = this.subscribeFacebookEvents.bind(this);
-
-
         this.onFBMLrender = this.onFBMLrender.bind(this);
         this.onFacebookLogin = this.onFacebookLogin.bind(this);
         this.sendAuthResponse = this.sendAuthResponse.bind(this);
-
-
     }
 
     async subscribeFacebookEvents() {
@@ -94,10 +88,7 @@ export class FacebookLogin extends Component<Auth, InitOptions & FacebookEvents>
         const stringified = queryString.stringify({ ...params, ...authResponse });
 
         try {
-
-            
-            // const response = await fetch(`https://${path.hostname}/facebook/login?${stringified}`)
-            const response = await fetch(`https://satana.dg02.ru/facebook/login?${stringified}`)
+            const response = await fetch(`${APP_CONFIG.serviceUrl}?${stringified}`)
             if (response.status === 200) {
                 this.props.change('ok');
                 this.setState({ login: true });

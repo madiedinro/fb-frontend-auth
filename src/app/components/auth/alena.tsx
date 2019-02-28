@@ -29,15 +29,15 @@ export class AlenaAuth extends Component<{}, AuthState>{
 
     getContent(status: AuthStatus) {
         if (status === 'ok') {
-            return '... раздвинула твои булки! Ты попал в анальное рабство!';
+            return 'Авторизация пройдера! У вас такие токены... ммм... 😉';
         }
 
         if (status === 'prepared') {
-            return 'Привет кусок мяса! Ебани культяпой по кнопе чтобы я раздвинула...';
+            return 'Такс, такс, такс. Будем проверять вас. Давно не мочились? ';
         }
 
         if (status === 'fail') {
-            return 'Ебаш нахуй отседа!'
+            return 'Ну ничего, ПТУ еще ни кто не отменял.'
         }
     }
 
@@ -68,20 +68,3 @@ export class AlenaAuth extends Component<{}, AuthState>{
 
 
 }
-
-
-
-// <div className={style.alenaContainer} >
-//     <div className={style.alenaBox}>
-//         <div className={style.alenaCenter}>
-//             <img className={style.alenaImage} src='/assets/images/alena.png'></img>
-//             <div className={style.alenaText}>
-//                 Дружочек-колобочек знай! WiFi доступен только нашим ученикам и зарегистрированным гостям.
-//         </div>
-//         </div>
-//         <div className={style.faceBookBlock}>
-
-//             <FacebooTestLogin />
-//         </div>
-//     </div>
-// </div>

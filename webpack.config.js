@@ -1,16 +1,18 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { readFileSync } = require('fs');
+const jsyaml = require('js-yaml');
 
-require('dotenv').config('.env');
 
-// process.env.NODE_ENV = process.env.WEBPACK_MODE;
+
 const isProduction = process.env.NODE_ENV === 'production';
+console.log(process.env.NODE_ENV);
+const envName = process.env.NODE_ENV === 'production' ? 'production' : process.env.NODE_ENV || 'development';
 
+const envConfig = jsyaml.load(readFileSync('./config.yml'));
+const config = envConfig[envName];
 
 module.exports = (env, args) => {
 	let production = false;
@@ -32,18 +34,6 @@ module.exports = (env, args) => {
 		},
 		target: 'web',
 		devtool: production ? false : 'source-map',
-		// optimization: {
-		// 	splitChunks: {
-		// 		cacheGroups: {
-		// 			vendor: {
-		// 				test: /[\\/]node_modules[\\/]/,
-		// 				name: 'js/vendor',
-		// 				chunks: 'initial',
-		// 				enforce: true,
-		// 			},
-		// 		},
-		// 	},
-		// },
 		resolve: {
 			extensions: ['.ts', '.tsx', '.js', '.html', '.txt'],
 		},
@@ -98,21 +88,13 @@ module.exports = (env, args) => {
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				'PRODUCTION': JSON.stringify(isProduction)
+				'PRODUCTION': JSON.stringify(isProduction),
+				APP_CONFIG: JSON.stringify(config)
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/static/index.html'
 			}),
 			new ForkTsCheckerWebpackPlugin(),
-			// new CopyWebpackPlugin([
-			// 	// static files to the site root folder (index and robots)
-			// 	{
-			// 		from: './src/static/**/*',
-			// 		to: path.resolve('./dist/'),
-			// 		toType: 'dir',
-			// 		flatten: true
-			// 	},
-			// ]),
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
 				chunkFilename: '[id].css'

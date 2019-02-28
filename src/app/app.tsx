@@ -1,5 +1,4 @@
 import { Component, h } from 'preact';
-// import { FacebookLogin } from './components/facebook';
 import { AlenaAuth } from './components/auth';
 
 export interface AppProps {
