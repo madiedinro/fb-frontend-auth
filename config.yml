@@ -1,6 +1,6 @@
 production:
     appId: '995966740602134'
-    serviceUrl: ''
+    serviceUrl: /digitalgodbot/fbcallback
 development:
     appId: '398277270719379'
     serviceUrl: 'https://satana.dg02.ru/facebook/login'
