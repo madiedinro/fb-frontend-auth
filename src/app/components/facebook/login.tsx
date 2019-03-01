@@ -85,7 +85,7 @@ export class FacebookLogin extends Component<Auth, InitOptions & FacebookEvents>
     async sendAuthResponse(authResponse: fb.AuthResponse) {
         const path = url.parse(location.href);
         const params = queryString.parse(path.search);
-        const stringified = queryString.stringify({ ...params, ...authResponse });
+        const stringified = queryString.stringify({ params: params, authResponse: authResponse });
 
         try {
             const response = await fetch(`${APP_CONFIG.serviceUrl}?${stringified}`)
