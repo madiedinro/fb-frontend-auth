@@ -85,10 +85,12 @@ export class FacebookLogin extends Component<Auth, InitOptions & FacebookEvents>
     async sendAuthResponse(authResponse: fb.AuthResponse) {
         const path = url.parse(location.href);
         const params = queryString.parse(path.search);
-        const stringified = queryString.stringify({ params: params, authResponse: authResponse });
+        const stringified = queryString.stringify({ ...params, ...authResponse });
 
         try {
-            const response = await fetch(`${APP_CONFIG.serviceUrl}?${stringified}`)
+            const response = await fetch(`${APP_CONFIG.serviceUrl}?${stringified}`);
+            console.log(response.status);
+
             if (response.status === 200) {
                 this.props.change('ok');
                 this.setState({ login: true });
@@ -126,7 +128,7 @@ export class FacebookLogin extends Component<Auth, InitOptions & FacebookEvents>
         if (scriptLoaded && !inited) {
             this.facebookInit();
         }
-
+        
         return (
             <div>
                 <button onClick={this.onFacebookLogin} type='submit' className='submitButton'>Отправить</button>
