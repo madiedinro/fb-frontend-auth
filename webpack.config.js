@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const { readFileSync } = require('fs');
 const jsyaml = require('js-yaml');
 
@@ -64,15 +66,16 @@ module.exports = (env, args) => {
 				},
 				{
 					test: /\.(png|jpg|gif)$/,
-					exclude: /node_modules/,
-					use: [
-						{
-							loader: 'file-loader',
-							options: {
-								limit: 10000,
-								name: '[path][name].[ext]?[hash:base64:5]'
-							}
-						}]
+					use: 'url-loader?limit=10000'
+					// exclude: /node_modules/,
+					// use: [
+					// 	{
+					// 		loader: 'file-loader',
+					// 		options: {
+					// 			name: '[path][name].[ext]?[hash:base64:5]',
+					// 			outputPath: 'images'
+					// 		}
+					// 	}]
 				},
 
 			],
@@ -91,6 +94,14 @@ module.exports = (env, args) => {
 				'PRODUCTION': JSON.stringify(isProduction),
 				APP_CONFIG: JSON.stringify(config)
 			}),
+			new CopyWebpackPlugin([
+				{
+					from: 'src/static/images/*',
+					to: 'images',
+					toType: 'dir',
+					flatten: true
+				},
+			]),
 			new HtmlWebpackPlugin({
 				template: './src/static/index.html'
 			}),

@@ -1,7 +1,6 @@
 import { Component, h } from 'preact';
 import { FacebookLogin } from '../facebook';
-import * as image from '../../images/alena.png';
-
+import { ShowIf } from '../../shoif';
 
 type AuthStatus = 'ok' | 'prepared' | 'fail';
 
@@ -46,12 +45,11 @@ export class AlenaAuth extends Component<{}, AuthState>{
             <div className='alenaContainer'>
                 <div className='alenaBox'>
                     <div className='alenaCenter'>
-                        <img className='alenaImage' src={image} />
+                        <img className='alenaImage' src='images/alena-2.png' />
                         <div className='alenaText'>{this.getContent(this.state.status)}</div>
                     </div>
-                    {
-                        this.state.status !== 'ok' &&
-                        <div>
+                    <ShowIf condition={this.state.status !== 'ok'}>
+                        <div key='start'>
                             <div className='policy'>
                                 Отправляя данные вы соглашаетесь с <a href='https://digitalgod.be/policy'>политикой конфиденциальности</a>
                             </div>
@@ -59,8 +57,7 @@ export class AlenaAuth extends Component<{}, AuthState>{
                                 <FacebookLogin change={this.handleAuth} />
                             </div>
                         </div>
-                    }
-
+                    </ShowIf>
                 </div>
             </div>
         );
