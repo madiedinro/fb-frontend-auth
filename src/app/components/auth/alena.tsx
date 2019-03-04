@@ -1,6 +1,6 @@
 import { Component, h } from 'preact';
 import { FacebookLogin } from '../facebook';
-import { ShowIf } from '../../shoif';
+import { ShowIf } from '../../lib';
 
 type AuthStatus = 'ok' | 'prepared' | 'fail';
 
@@ -9,7 +9,12 @@ interface AuthState {
 }
 
 export class AlenaAuth extends Component<{}, AuthState>{
+    
+    getDefaultProps(){
+        return {
 
+        }
+    }
 
     constructor(props: {}) {
         super(props);

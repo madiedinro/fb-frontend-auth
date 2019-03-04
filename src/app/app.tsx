@@ -1,5 +1,6 @@
 import { Component, h } from 'preact';
-import { AlenaAuth } from './components/auth';
+import { AlenaComponent } from './components/alena';
+import './styles/app.css'
 
 export interface AppProps {
 	title: string;
@@ -29,9 +30,12 @@ export class App extends Component<AppProps, AppState> {
 	}
 
 	render(props: AppProps, state: AppState) {
+		let success = <div>
+			Все получилочь!<br/>Можно закрыть окно
+		</div>
 		return (
 			<div className='wrapper'>
-				<AlenaAuth />
+				<AlenaComponent mainText={success} />
 			</div>
 		)
 	}

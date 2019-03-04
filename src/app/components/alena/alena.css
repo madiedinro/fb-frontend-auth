@@ -1,0 +1,38 @@
+.alena--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.alena--center{
+    max-width: 560px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 75px;
+}
+.alena--text{
+    text-align: left;
+    max-width: 360px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+    font-weight: 300;
+    color: #000;
+    
+}
+
+.alena--text .alena--title {
+    
+}
+.alena--image{
+    width: 100px;
+    height: auto;
+}

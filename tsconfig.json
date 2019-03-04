@@ -8,18 +8,20 @@
 		"removeComments": true,
 		"sourceMap": true,
 		"jsx": "react",
-		"jsxFactory": "h"
+		"jsxFactory": "h",
+		"allowSyntheticDefaultImports": true, 
+		"esModuleInterop": true
 	},
 	"suppressImplicitAnyIndexErrors": true,
-	"lib": [
-		"dom",
-		"es2017"
-	],
-	"baseUrl": ".",
-	"include": [
-		"src/*"
-	],
-	"exclude": [
-		"dist"
-	]
+	// "lib": [
+	// 	"dom",
+	// 	"es2017"
+	// ],
+	// "baseUrl": ".",
+	// "include": [
+	// 	"src/*"
+	// ],
+	// "exclude": [
+	// 	"dist"
+	// ]
 }

@@ -37,7 +37,7 @@ module.exports = (env, args) => {
 		target: 'web',
 		devtool: production ? false : 'source-map',
 		resolve: {
-			extensions: ['.ts', '.tsx', '.js', '.html', '.txt'],
+			extensions: ['.ts', '.tsx', '.js'],
 		},
 		module: {
 			rules: [
@@ -59,9 +59,10 @@ module.exports = (env, args) => {
 							loader: process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader
 						}, {
 							loader: "css-loader"
-						}, {
-							loader: "sass-loader"
 						}
+						// , {
+						// 	loader: "sass-loader"
+						// }
 					]
 				},
 				{
@@ -85,9 +86,9 @@ module.exports = (env, args) => {
 				'Access-Control-Allow-Origin': '*'
 			},
 			contentBase: './dist',
-			compress: true,
+			// compress: true,
 			port: 3030,
-			https: true
+			// https: true
 		},
 		plugins: [
 			new webpack.DefinePlugin({

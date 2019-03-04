@@ -3,7 +3,10 @@
 	"version": "1.0.0",
 	"description": "Alena auth",
 	"scripts": {
-		"build": "cross-env NODE_ENV=production yarn clean && webpack --config ./webpack.config.js --mode production --progress",
+		"build:old": "cross-env NODE_ENV=production yarn clean && webpack --config ./webpack.config.js --mode production --progress",
+		"build": "npm run build:types && npm run build:js",
+		"build:types": "tsc --emitDeclarationOnly",
+		"build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
 		"dev": "yarn clean && webpack --config ./webpack.config.js --mode development",
 		"start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --mode development",
 		"clean": "rimraf ./dist"
@@ -29,6 +32,12 @@
 		"query-string": "^6.2.0"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.3.4",
+		"@babel/plugin-proposal-class-properties": "^7.3.4",
+		"@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+		"@babel/preset-env": "^7.3.4",
+		"@babel/preset-typescript": "^7.3.3",
 		"@types/facebook-js-sdk": "^3.2.0",
 		"@types/query-string": "^6.2.0",
 		"copy-webpack-plugin": "^4.5.2",
@@ -46,6 +55,7 @@
 		"rimraf": "^2.6.2",
 		"sass-loader": "^7.1.0",
 		"style-loader": "^0.23.1",
+		"styled-jsx": "^3.2.1",
 		"ts-loader": "^5.3.3",
 		"tslint": "^5.13.0",
 		"typescript": "^3.3.3333",
