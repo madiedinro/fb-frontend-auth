@@ -1,6 +1,9 @@
 import { Component, h } from 'preact';
 import { AlenaComponent } from './components/alena';
 import './styles/app.css'
+import { Router, route } from 'preact-router';
+// import { createHashHistory } from 'history';
+
 
 export interface AppProps {
 	title: string;
@@ -10,32 +13,20 @@ interface AppState {
 	title: string;
 }
 
-export class App extends Component<AppProps, AppState> {
-	public state = {
-		title: 'local state'
-	};
+//  history={createHashHistory()
 
+export class App extends Component<AppProps, AppState> {
 	constructor(props: AppProps) {
 		super(props);
-		this.state.title += ' - ' + props.title;
-	}
-
-	componentDidMount() {
-		setTimeout(() => {
-			let state = this.state;
-
-			state.title = `Preact's [componentDidMount] worked as expected`;
-			this.setState(state);
-		}, 2000);
 	}
 
 	render(props: AppProps, state: AppState) {
-		let success = <div>
-			Все получилочь!<br/>Можно закрыть окно
-		</div>
 		return (
 			<div className='wrapper'>
-				<AlenaComponent mainText={success} />
+			<Router>
+				<AlenaComponent path="/auth_success" title={"Все получилочь!"} mainText={"Можно закрыть вкладку"} />
+				<AlenaComponent default title={"Ай-ай-ай!"} mainText={"Не шути со мной..."} />
+			</Router>
 			</div>
 		)
 	}

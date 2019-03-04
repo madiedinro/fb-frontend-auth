@@ -3,12 +3,11 @@
 	"version": "1.0.0",
 	"description": "Alena auth",
 	"scripts": {
-		"build:old": "cross-env NODE_ENV=production yarn clean && webpack --config ./webpack.config.js --mode production --progress",
-		"build": "npm run build:types && npm run build:js",
+		"build": "cross-env NODE_ENV=production yarn clean && webpack --config ./webpack.config.js --mode production --progress",
 		"build:types": "tsc --emitDeclarationOnly",
 		"build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
 		"dev": "yarn clean && webpack --config ./webpack.config.js --mode development",
-		"start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --mode development",
+		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --mode development",
 		"clean": "rimraf ./dist"
 	},
 	"repository": {
@@ -27,8 +26,10 @@
 	"license": "ISC",
 	"dependencies": {
 		"dotenv": "^6.2.0",
+		"history": "^4.7.2",
 		"isomorphic-unfetch": "^3.0.0",
 		"preact": "^8.2.9",
+		"preact-router": "^2.6.1",
 		"query-string": "^6.2.0"
 	},
 	"devDependencies": {
@@ -55,7 +56,6 @@
 		"rimraf": "^2.6.2",
 		"sass-loader": "^7.1.0",
 		"style-loader": "^0.23.1",
-		"styled-jsx": "^3.2.1",
 		"ts-loader": "^5.3.3",
 		"tslint": "^5.13.0",
 		"typescript": "^3.3.3333",

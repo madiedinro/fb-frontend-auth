@@ -9,7 +9,7 @@
     -webkit-user-select: none;
 }
 .alena--center{
-    max-width: 560px;
+    max-width: 460px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -17,21 +17,21 @@
     align-items: center;
     margin-bottom: 75px;
 }
+
 .alena--text{
     text-align: left;
     max-width: 360px;
     padding: 15px;
     font-size: 18px;
-    font-weight: 300;
     line-height: 1.5;
     font-weight: 300;
     color: #000;
-    
 }
 
-.alena--text .alena--title {
-    
+.alena--text *:first-child{
+    font-weight: 500;
 }
+
 .alena--image{
     width: 100px;
     height: auto;

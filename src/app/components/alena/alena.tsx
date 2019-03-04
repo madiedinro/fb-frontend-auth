@@ -38,8 +38,10 @@ export class AlenaComponent extends Component<AlenaProps, AuthState>{
                 
                     <div className='alena--center'>
                         <img className='alena--image' src='images/alena-2.png' />
-                        <div className='alena--title'>{this.props.title}</div>
-                        <div className='alena--text'>{this.props.mainText}</div>
+                        <div className='alena--text'>
+                            <div>{this.props.title}</div>
+                            <div>{this.props.mainText}</div>
+                        </div>
                     </div>
                     <ShowIf condition={this.props.onClick}>
                         <div className='buttonBlock'>

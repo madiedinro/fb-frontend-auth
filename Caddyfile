@@ -1,0 +1,5 @@
+localhost:8080
+rewrite {
+    to {path} {path}/ /index.html
+}
+tls off

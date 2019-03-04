@@ -4,6 +4,10 @@ html, body, .app, .wrapper {
     height: 100%;
 }
 
+html body {
+    font-family: 'futura-pt', 'Raleway', Arial, sans-serif;
+}
+
 .wrapper {
     display: flex;
     width: 100vw;
