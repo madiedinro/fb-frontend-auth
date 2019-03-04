@@ -1,5 +1,4 @@
-localhost:8080
-rewrite {
-    to {path} {path}/ /index.html
-}
+:8080
+rewrite { to {path} {path}/ / }
+
 tls off
