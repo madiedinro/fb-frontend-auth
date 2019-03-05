@@ -2,8 +2,6 @@ import { Component, h } from 'preact';
 import { AlenaComponent } from './components/alena';
 import './styles/app.css'
 import { Router, route } from 'preact-router';
-// import { createHashHistory } from 'history';
-
 
 export interface AppProps {
 	title: string;
@@ -12,8 +10,6 @@ export interface AppProps {
 interface AppState {
 	title: string;
 }
-
-//  history={createHashHistory()
 
 export class App extends Component<AppProps, AppState> {
 	constructor(props: AppProps) {
@@ -24,7 +20,8 @@ export class App extends Component<AppProps, AppState> {
 		return (
 			<div className='wrapper'>
 			<Router>
-				<AlenaComponent path="/auth_success" title={"Все получилочь!"} mainText={"Можно закрыть вкладку"} />
+				<AlenaComponent path="/alena/auth_success" title={"Все получилочь!"} mainText={"Можно закрыть вкладку"} />
+				<AlenaComponent path="/alena/too_late" title={"Ну и где тебя носило?"} mainText={"Мне сказали, что запрашиваемого ресурса уже нет. Если это старая ссылка, возможно вышло ее время."} />
 				<AlenaComponent default title={"Ай-ай-ай!"} mainText={"Не шути со мной..."} />
 			</Router>
 			</div>

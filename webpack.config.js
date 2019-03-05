@@ -96,12 +96,8 @@ module.exports = (env, args) => {
 				APP_CONFIG: JSON.stringify(config)
 			}),
 			new CopyWebpackPlugin([
-				{
-					from: 'src/static/images/*',
-					to: 'images',
-					toType: 'dir',
-					flatten: true
-				},
+				{ from: 'src/static/images/*', to: 'images', toType: 'dir', flatten: true },
+				{ from: 'src/static/favicon.ico', to: 'favicon.ico'},
 			]),
 			new HtmlWebpackPlugin({
 				template: './src/static/index.html'

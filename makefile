@@ -8,3 +8,6 @@ run-dev:
 build:
 	docker build -t alena .
 	
+push:
+	docker tag alena madiedinro/alena
+	docker push madiedinro/alena

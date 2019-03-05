@@ -30,7 +30,7 @@ ENV ACME_AGREE="false"
 
 # Telemetry Stats
 ENV ENABLE_TELEMETRY="false"
-
+WORKDIR /usr/share/fb-frontend-auth
 
 ENTRYPOINT [ "/bin/parent", "caddy" ]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=$ACME_AGREE"]
