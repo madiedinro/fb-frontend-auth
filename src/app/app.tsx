@@ -21,7 +21,7 @@ export class App extends Component<AppProps, AppState> {
 			<div className='wrapper'>
 			<Router>
 				<AlenaComponent path="/alena/auth_success" title={"Все получилочь!"} mainText={"Можно закрыть вкладку"} />
-				<AlenaComponent path="/alena/too_late" title={"Ну и где тебя носило?"} mainText={"Мне сказали, что запрашиваемого ресурса уже нет. Если это старая ссылка, возможно вышло ее время."} />
+				<AlenaComponent path="/alena/too_late" title={"Ну и где тебя носило?"} mainText={"Вероятно время запрашиваемого ресурса вышло."} />
 				<AlenaComponent default title={"Ай-ай-ай!"} mainText={"Не шути со мной..."} />
 			</Router>
 			</div>

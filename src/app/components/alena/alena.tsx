@@ -35,7 +35,6 @@ export class AlenaComponent extends Component<AlenaProps, AuthState>{
     render() {
         return (
             <div className='alena--container'>
-                
                     <div className='alena--center'>
                         <img className='alena--image' src='images/alena-2.png' />
                         <div className='alena--text'>
