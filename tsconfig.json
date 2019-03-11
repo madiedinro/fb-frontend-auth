@@ -8,10 +8,16 @@
 		"removeComments": true,
 		"sourceMap": true,
 		"jsx": "react",
+		"sourceRoot": "./src/",
 		"jsxFactory": "h",
-		"allowSyntheticDefaultImports": true, 
+		"sourceMap": true,
+		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true
 	},
+	"outDir": "./dist/",
+	"include": [
+		"src/**/*"
+	],
 	"suppressImplicitAnyIndexErrors": true,
 	// "lib": [
 	// 	"dom",

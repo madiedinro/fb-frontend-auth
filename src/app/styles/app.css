@@ -6,12 +6,27 @@ html, body, .app, .wrapper {
 
 html body {
     font-family: 'futura-pt', 'Raleway', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.4em;
+}
+
+h2, h3, h4 {
+    font-weight: 500;
+}
+
+h3 {
+    margin: 30px 0 10px 0;
+    font-size: 28px;
+}
+
+p {
+    margin: 30px 0 10px 0;
 }
 
 .wrapper {
     display: flex;
     width: 100vw;
     height: 100vh;
-    text-align: center;
 }
 

@@ -26,9 +26,9 @@
 	"license": "ISC",
 	"dependencies": {
 		"dotenv": "^6.2.0",
-		"isomorphic-unfetch": "^3.0.0",
 		"preact": "^8.2.9",
-		"preact-router": "^2.6.1"
+		"preact-router": "^2.6.1",
+		"whatwg-fetch": "^3.0.0"
 	},
 	"devDependencies": {
 		"copy-webpack-plugin": "^4.5.2",
@@ -44,6 +44,7 @@
 		"ts-loader": "^5.3.3",
 		"tslint": "^5.13.0",
 		"typescript": "^3.3.3333",
+		"url-loader": "^1.1.2",
 		"webpack": "^4.16.3",
 		"webpack-cli": "^3.2.3",
 		"webpack-dev-server": "^3.1.5"

@@ -1,0 +1,8 @@
+FROM node:10-alpine as builder
+
+RUN apk --no-cache add make
+
+WORKDIR /build
+VOLUME /build/node_modules
+
+CMD ["make", "yarn"]
