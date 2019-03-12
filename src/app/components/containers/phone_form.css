@@ -12,6 +12,9 @@
     
 }
 
+.form--error {
+    color: #FF40BE;
+}
 
 .phone--form--group input, .phone--form--group button {
     border-radius: 30px;

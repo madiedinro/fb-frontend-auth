@@ -21,6 +21,7 @@ interface PhoneFormState {
     code_status?: number;
     done?: number;
     step: number;
+    error?: string;
 }
 
 
@@ -39,10 +40,11 @@ export class PhoneFormContainer extends Component<PhoneFormProps, PhoneFormState
     }
 
     checkDone(res: { [k: string]: any }) {
-        if (res && res.auth_code ) {
-            const { redirect_uri } = this.props;
+        const { redirect_uri } = this.props;
+        if (res.auth_code ) {
             setTimeout(() => {
-                location.href = redirect_uri + '&authorization_code=' + res.auth_code;
+                const redir_url = redirect_uri + '&authorization_code=' + res.auth_code;
+                location.href = redir_url
             }, 100)
         }
     }
@@ -54,13 +56,7 @@ export class PhoneFormContainer extends Component<PhoneFormProps, PhoneFormState
         api.requestCode(data)
             .then((res) => {
                 if (res && typeof res == 'object') {
-                    const step = (res.phone_status && 1 || 0) +
-                        ((res.phone_status && res.code_status) && 1 || 0)
-                    this.setState({
-                        phone_status: res.phone_status,
-                        code_status: res.code_status,
-                        step
-                    })
+                    this.setState(res)
                     this.checkDone(res)
                 }
             })
@@ -68,15 +64,17 @@ export class PhoneFormContainer extends Component<PhoneFormProps, PhoneFormState
 
 
     render() {
-        const { step } = this.state;
+        const { error, phone_status, code_status } = this.state;
+        const step = (phone_status && 1 || 0) +
+                        ((phone_status && code_status) && 1 || 0)
         return (
             <CenterBoxContainer>
                 <div className='phone--form'>
                     <AlenaComponent title={"Бот Алена"} mainText={"Доставать и спамить не буду. Буду просто хладнокровно смотреть."}></AlenaComponent>
-                    <h3>Итак, приступимс</h3>
+                    <h3>Такс, приступим.</h3>
                     <p>
                         <ShowIf condition={step === 0}>
-                            На указанный номер телефона я пришлю сообщение с дальнейшими инструкциями.
+                        Напиши свой номер мобильного телефона, начиная с кода страны. Россия и Казахстан +7, Беларусь +375 и Украина +380.
                         </ShowIf>
                         <ShowIf condition={step === 1}>
                             <span>
@@ -84,6 +82,11 @@ export class PhoneFormContainer extends Component<PhoneFormProps, PhoneFormState
                                 <strong>{' '}{this.state.phone}.{' '}</strong>
                                 Какие цифры пришли?
                             </span>
+                        </ShowIf>
+                        <ShowIf condition={error}>
+                            <div className="form--error">
+                            {error}
+                            </div>
                         </ShowIf>
                         <ShowIf condition={step === 2}>
                             Готово! Отправляю обратно фейсбуку

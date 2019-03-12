@@ -9,7 +9,7 @@
     -webkit-user-select: none;
 }
 .box--center{
-    max-width: 460px;
+    max-width: 360px;
     width: 100%;
     display: flex;
     flex-direction: row;
