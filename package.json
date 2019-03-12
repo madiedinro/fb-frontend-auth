@@ -31,6 +31,7 @@
 		"whatwg-fetch": "^3.0.0"
 	},
 	"devDependencies": {
+		"@types/url-parse": "^1.4.3",
 		"copy-webpack-plugin": "^4.5.2",
 		"cross-env": "^5.2.0",
 		"css-loader": "^2.1.0",

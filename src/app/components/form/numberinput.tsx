@@ -1,29 +1,37 @@
 import { Component, h } from 'preact';
-import './textinput.css'
+import './numberinput.css'
 
 
-interface TextInputProps {
+interface NumberInputProps {
     onChange: any,
     placeholder?: string;
     value?: string;
 }
 
-interface TextInputState {
+interface NumberInputState {
     value?: string;
 }
 
 
-export class TextInput extends Component<TextInputProps, TextInputState>{
+
+const num_re = /[^\d]+/g;
+const clean_string = (str: string) => str.replace(num_re, '');
+
+
+export class NumberInput extends Component<NumberInputProps, NumberInputState>{
     state = {
         value: this.props.value
     };
 
     changeValue(e) {
-        const val = e.target.value
-        this.props.onChange(val)
-        this.setState({ value: val })
+        const val = clean_string(e.target.value)
+        if (val !== this.state.value) {
+            // const clean_val = val
+            this.props.onChange(val)
+            this.setState({ value: val })
+        }
     }
-
+    //  ['7', '375', '380']  7[]
     render() {
         const { onChange, value: hideme, ...rest } = this.props;
         const { value } = this.state;
@@ -35,10 +43,9 @@ export class TextInput extends Component<TextInputProps, TextInputState>{
                     onKeyDown={(e) => setTimeout(() => this.changeValue(e), 10)}
                     onKeyPress={(e) => this.changeValue(e)}
                     value={value}
-                    type="text" {...rest}
+                    type="tel" {...rest}
                 ></input>
             </div>
-
         );
     }
 }

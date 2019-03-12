@@ -2,10 +2,9 @@
 import 'whatwg-fetch';
 
 
-export async function initApi(endpoint: string) {
+export function initApi(endpoint: string) {
     return new DGodApi(endpoint)
 }
-
 
 
 export class DGodApi {
@@ -15,14 +14,19 @@ export class DGodApi {
         this.endpoint = endpoint;
     }
 
-    async requestCode(phone: string) {
-        const url = `${this.endpoint}/fb_phone_validate`;
+    async requestCode(data: { [k: string]: any }) {
+        const url = `${this.endpoint}/account_linking`;
         return fetch(url, {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: 'POST',
-            body: JSON.stringify({ phone })
+            body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(resjson => resjson)
+            .then(res => res.json())
+            .then(resjson => resjson)
     }
+
+    // async accountLinking(acc_link_token) {
+    //     const path = '/account_linking'
+    //     await this.requestCode()
+    // }
 }

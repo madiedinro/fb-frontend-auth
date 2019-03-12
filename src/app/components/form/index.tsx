@@ -1,2 +1,2 @@
 export * from './calltoaction'
-export * from './textinput'
+export * from './numberinput'
