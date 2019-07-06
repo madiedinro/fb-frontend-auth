@@ -1,6 +1,6 @@
 production:
-    appId: '995966740602134'
-    serviceUrl: /digitalgodbot/fbcallback
+    app_id: '995966740602134'
+    service_url: /digitalgodbot/fbcallback
 development:
-    appId: '398277270719379'
-    serviceUrl: 'https://satana.dg02.ru/facebook/login'
+    app_id: '398277270719379'
+    service_url: 'https://bolt.rstat.org/facebook'

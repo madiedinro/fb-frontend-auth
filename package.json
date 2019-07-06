@@ -20,7 +20,8 @@
 		"webpack 4"
 	],
 	"alias": {
-		"preact": "./node_modules/preact/dist/preact.min.js"
+		"preact": "./node_modules/preact/dist/preact.min.js",
+		"@app": "./src"
 	},
 	"author": "fasderq <fasderq@gmial.com>",
 	"license": "ISC",

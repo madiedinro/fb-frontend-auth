@@ -1,11 +1,13 @@
+
+
 declare module "*.png" {
     const value: any;
     export = value;
 }
 
 interface AppConfig  {
-    appId: string;
-    serviceUrl: string;
+    app_id: string;
+    service_url: string;
 }
 
 declare const APP_CONFIG: AppConfig;

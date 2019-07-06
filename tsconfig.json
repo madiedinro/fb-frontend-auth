@@ -10,9 +10,8 @@
 		"jsx": "react",
 		"sourceRoot": "./src/",
 		"jsxFactory": "h",
-		"sourceMap": true,
 		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
 	},
 	"outDir": "./dist/",
 	"include": [

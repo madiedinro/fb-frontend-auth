@@ -2,33 +2,25 @@ import { Component, h } from 'preact';
 import { AlenaComponent } from './components/alena';
 import { PhoneFormContainer } from './components/containers';
 import './styles/app.css'
+import { AppProps, AppState } from './intrerfaces'
 import { Router, route } from 'preact-router';
 import { initApi, DGodApi } from './lib/api';
 
 
-const api = initApi('https://bolt.rstat.org/facebook')
-
-
-export interface AppProps {
-	title: string;
-}
-
-interface AppState {
-
-	title: string;
-}
+const api = initApi(APP_CONFIG.service_url)
 
 
 export class App extends Component<AppProps, AppState> {
+	/**
+	 * Core app module
+	 * 
+	 * TODO: Try to implement child context
+	 * getChildContext(){return { api: this.props.api }}
+	 */
+
 	constructor(props: AppProps) {
 		super(props);
 	}
-
-	// getChildContext(){
-	// 	return {
-	// 		api: this.props.api
-	// 	}
-	// }
 
 	render(props: AppProps, state: AppState) {
 		return (
